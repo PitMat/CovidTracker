@@ -1,48 +1,6 @@
 <div class="jumbotron bg-white text-center">
   <h1 class="display-4">Corona Covid-19 Tracker</h1>
-<div class="row">
-  <div class="card col">
-    <div class="ui statistic">
-      <div class="label">
-        Views
-      </div>
-      <div class="value">
-        40,509
-      </div>
-    </div>
-  </div>
-
-  <div class="card col">
-    <div class="ui statistic">
-      <div class="label">
-        Views
-      </div>
-      <div class="value">
-        40,509
-      </div>
-    </div>
-  </div>
-
-  <div class="card col">
-    <div class="ui statistic">
-      <div class="label">
-        Views
-      </div>
-      <div class="value">
-        40,509
-      </div>
-    </div>
-  </div>
-
-  <div class="card col">
-    <div class="ui statistic">
-      <div class="label">
-        Views
-      </div>
-      <div class="value">
-        40,509
-      </div>
-    </div>
-  </div>
-</div>
+  <hr>
+  <app-dashboard-card [totalConfirmed]="totalConfirmed"
+  [totalActive]="totalActive" [totalRecovered]="totalRecovered" [totalDeaths]="totalDeaths"></app-dashboard-card>
 </div>
