@@ -9,17 +9,12 @@ import {GlobalDataSummary} from '../../models/globalData';
 })
 export class CountriesComponent implements OnInit {
 
-  @Input('totalConfirmed')
-  totalConfirmed;
-  @Input('totalDeaths')
-  totalDeaths;
-  @Input('totalActive')
-  totalActive;
-  @Input('totalRecovered')
-  totalRecovered;
-
   data: GlobalDataSummary[];
   countries: string[] = [];
+  totalConfirmed = 0;
+  totalActive = 0;
+  totalDeaths = 0;
+  totalRecovered = 0;
   constructor(private service: DataServiceService) {
   }
 
@@ -33,7 +28,14 @@ export class CountriesComponent implements OnInit {
   }
 
   updateValues(country: string){
-    console.log(country);
+    this.data.forEach(cs => {
+      if (cs.country === country) {
+        this.totalActive = cs.active;
+        this.totalConfirmed = cs.confirmed;
+        this.totalDeaths = cs.deaths;
+        this.totalRecovered = cs.recovered;
+      }
+    });
   }
 
 }
