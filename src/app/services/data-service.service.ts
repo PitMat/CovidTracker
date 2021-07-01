@@ -22,7 +22,7 @@ export class DataServiceService {
         rows.forEach(row => {
           const cols = row.split(/,(?=\S)/);
           const cs = {
-            country: cols[2],
+            country: cols[3],
             confirmed: +cols[7],
             deaths: +cols[8],
             recovered: +cols[9],

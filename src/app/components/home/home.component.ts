@@ -25,14 +25,41 @@ export class HomeComponent implements OnInit {
   constructor(private dataService: DataServiceService) {
   }
 
-  initChart() {
+  initChart(caseType: string): void {
     const datatable = [];
     datatable.push(['Country', 'Cases']);
+
     this.globalData.forEach(cs => {
+      let value: number;
+      if (caseType === 'c') {
+        if (cs.confirmed > 400000) {
+          value = cs.confirmed;
+        }
+      }
+
+      if (caseType === 'd') {
+        if (cs.deaths > 20000) {
+          value = cs.deaths;
+        }
+      }
+
+      if (caseType === 'r') {
+        if (cs.recovered > 20000) {
+          value = cs.recovered;
+        }
+      }
+
+      if (caseType === 'a') {
+        if (cs.active > 50000) {
+          value = cs.active;
+        }
+      }
+
       datatable.push([
-        cs.country, cs.confirmed
-        ]);
+        cs.country, value
+      ]);
     });
+
 
     this.pieChart = {
       chartType: 'PieChart',
@@ -64,10 +91,14 @@ export class HomeComponent implements OnInit {
               }
             });
 
-            this.initChart();
+            this.initChart('a');
           }
         }
       );
+  }
+
+  updateChart(input: HTMLInputElement): void {
+    this.initChart(input.value);
   }
 
 }
